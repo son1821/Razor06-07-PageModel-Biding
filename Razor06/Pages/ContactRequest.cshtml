@@ -1,0 +1,50 @@
+﻿@page "/contact.html"
+
+@model ContactRequestModel
+@{
+    ViewData["Title"] = "liên hệ";
+}
+<h1 class="display-4">Trang liên hệ</h1>
+<p class="lead">Điền các thông tin liên hệ</p>
+<hr />
+
+
+
+@* @functions{
+    public string UserId {set;get;} = "User ID...";
+    public double Tong(double a, double b){
+        return (a + b);
+    }
+} *@
+
+<form class="bg-light" method="post" asp-page="ContactRequest">
+
+    <div style="margin-bottom:20px">
+        <label class="form-label" asp-for="user.UserId" style="width:100px"></label>
+        <input class="form-control" asp-for="@Model.user.UserId" />
+        <span class="text-danger" asp-validation-for="user.UserId"></span>
+        <br />
+        <label class="form-label" asp-for="user.Email" style="width:100px"></label>
+        <input class="form-control" asp-for="@Model.user.Email" />
+     
+        <span class="text-danger" asp-validation-for="user.Email"></span>
+        <br />
+        <label class="form-label" asp-for="user.UserName" style="width:100px"></label>
+        <input class="form-control" asp-for="@Model.user.UserName" />
+    </div> 
+    <button class="btn btn-success" type="submit">Gui</button>
+
+</form>
+<hr />
+<div class="alert alert-danger">
+    <p>Thông tin user</p>
+    <ul>
+        <li>UserId: @Model.user.UserId</li>
+        <li>Email: @Model.user.Email</li>
+        <li>UserName: @Model.user.UserName</li>
+    </ul>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
